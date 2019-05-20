@@ -1,0 +1,80 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+.button{
+	color:blue;
+}
+.list{
+	list-style-type: none;
+}
+.html{
+	color:green;
+}
+.div_1{
+	
+	text-align:center;
+}
+
+#user1{
+	
+	border:1px solid black;
+	border-radius: 5px;
+	margin-left: 300px;
+}
+#user2{
+	
+	border:1px solid black;
+    padding-bottom: 55px;
+    border-radius: 5px;
+    margin-left: 300px;
+    margin-top: 20px;
+
+}
+#user3{
+	
+	border:1px solid black;
+     margin-left: 300px;
+    border-radius: 5px;
+     margin-top: 10px;
+     
+     padding-bottom:  50px;
+     padding-top: 50px;
+}
+#user4{
+      
+       border:1px solid black;
+        margin-left: 300px;
+       border-radius: 5px;
+        margin-top: 10px;
+         padding-bottom: 70px;
+
+}
+#map{
+	 border:1px solid black;
+	 text-align: center;
+	 margin:10px;
+}
+td,th{
+	text-align: center;
+}
+
+
+
+      .err_1{
+        color:red;
+        
+      }
+       .err_2{
+        color:green;
+        
+      }
+      .err_3,p{
+        color:red;
+        
+      }
+      .err_4{
+        color:green;
+        
+      }
