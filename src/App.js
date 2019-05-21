@@ -74,114 +74,112 @@ class App extends React.Component{
 
 
       handleSubmit (s){
-        s.preventDefault();
-        const name = this.state.name;
-        const email = this.state.email;
-        const phone = this.state.phone;
-        const password = this.state.password;
+          s.preventDefault();
+          const name = this.state.name;
+          const email = this.state.email;
+          const phone = this.state.phone;
+          const password = this.state.password;
 
-        const data={
-          name:this.state.name,
-          email:this.state.email,
-          phone:this.state.phone,
-          password:this.state.password
-        }
-        
-        var i=1;
-          i;
-        if (name===''){
-          i=0;
-          this.setState({name_err_message:'please enter Your name'})
-        }
+          const data={
+            name:this.state.name,
+            email:this.state.email,
+            phone:this.state.phone,
+            password:this.state.password
+          }
+          
+          var i=1;
+            i;
+          if (name===''){
+            i=0;
+            this.setState({name_err_message:'please enter Your name'})
+          }
 
-        if(email===''){
-          i=0;
-          this.setState({email_err_status:'please enter your email'})
-        }
-        
-        if(password===''){
-          i=0;
-          this.setState({password_err_message:'please enter Your password'})
-        }
+          if(email===''){
+            i=0;
+            this.setState({email_err_status:'please enter your email'})
+          }
+          
+          if(password===''){
+            i=0;
+            this.setState({password_err_message:'please enter Your password'})
+          }
 
-        if(phone===''){
-          i=0;
-          this.setState({phone_err_message:'Please enter your phone'})
-        }
+          if(phone===''){
+            i=0;
+            this.setState({phone_err_message:'Please enter your phone'})
+          }
 
-        //  if (name ===""||email === ""||password === ""||phone === "") {
-        //         document.getElementById("error_msg").innerHTML="<span class='err_1'>*please enter all feilds</span>";
-        //   return false;
-        // }
-      else{ i=1
-        fetch("http://10.90.90.110:4000/createUser",{method:"POST",headers: {'Accept': 'application/json, text/plain, */*',
-         'Content-Type': 'application/json'},dataType:'json', body:JSON.stringify(data)})
+          
+          else{ i=1
 
-        .then((response) =>{
-          if(response.ok) return response.json();
-          throw new Error('Request failed.');
-        })
-      
-        .then((myJson)=>{
-          var res = JSON.stringify(myJson);
-          var result = JSON.parse(res);
-          console.log('result.message',result.message);
-          document.getElementById("error_msg").innerHTML = result.message;
+              fetch("http://10.90.90.110:4000/createUser",{method:"POST",headers: {'Accept': 'application/json, text/plain, */*',
+               'Content-Type': 'application/json'},dataType:'json', body:JSON.stringify(data)})
 
-          if(result.status===200)
-            {
-              this.
-             document.getElementById("error_msg").innerHTML = "<span class='err_2'>"+result.message+"</span>";
-             this.getUsers();
-             return;
+              .then((response) =>{
+                if(response.ok) return response.json();
+                throw new Error('Request failed.');
+              })
+            
+              .then((myJson)=>{
+                var res = JSON.stringify(myJson);
+                var result = JSON.parse(res);
+                console.log('result.message',result.message);
+                document.getElementById("error_msg").innerHTML = result.message;
 
-            }
-            else{
-                 document.getElementById("error_msg").innerHTML = "<span class='err_3'>"+result.message+"</span>";
-                }
-        
-            console.log(result)
+                if(result.status===200)
+                  {
+           
+                   document.getElementById("error_msg").innerHTML = "<span class='err_2'>"+result.message+"</span>";
+                   this.getUsers();
+                   return;
 
-        })
+                  }
+                  else{
+                       document.getElementById("error_msg").innerHTML = "<span class='err_3'>"+result.message+"</span>";
+                      }
+                  console.log(result)
 
-        .catch(function(error){
-          console.log(error);
-        });
-        
+              })
+
+              .catch(function(error){
+                console.log(error);
+              });
           }
       }
 
 
       delete_users(phone) {
-      var data = {phone:phone};
-      console.log(data);
-      var x = confirm("Are you sure you want to delete?");
-        if (x){
-          fetch('http://10.90.90.110:4000/deleteUser', {method: 'POST',headers: {'Accept': 'application/json, text/plain, */*',
-           'Content-Type': 'application/json'},dataType:'json', body:JSON.stringify(data)})
-          
-          .then(function(response) {
-            return response.json();
-          })   
-        
-          .then(function(myJson) {
-            var res = JSON.stringify(myJson);
-            var y = JSON.parse(res);
-  
-            if(y.status===200) { 
-               
-              document.getElementById("error_msg").innerHTML= "<span class='err_4'>"+y.message+"";
-              this.getUsers();
-            }else {
-               document.getElementById("error_msg").innerHTML = y.message;
-              }
-          }.bind(this))
-          
-        } 
-        else {
-           return false ;
-        }
-  };
+          var data = {phone:phone};
+          console.log(data);
+          var x = confirm("Are you sure you want to delete?");
+            
+          if (x){
+            fetch('http://10.90.90.110:4000/deleteUser', {method: 'POST',headers: {'Accept': 'application/json, text/plain, */*',
+               'Content-Type': 'application/json'},dataType:'json', body:JSON.stringify(data)})
+              
+              .then(function(response) {
+                return response.json();
+              })   
+            
+              .then(function(myJson) {
+                var res = JSON.stringify(myJson);
+                var y = JSON.parse(res);
+      
+                if(y.status===200) { 
+                   
+                  document.getElementById("error_msg").innerHTML= "<span class='err_4'>"+y.message+"";
+                  this.getUsers();
+                }
+                else{
+                   document.getElementById("error_msg").innerHTML = y.message;
+                }
+              }.bind(this))
+              
+          } 
+          else {
+               return false ;
+          }
+      };
         
 
    
