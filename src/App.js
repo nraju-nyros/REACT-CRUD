@@ -31,9 +31,6 @@ class App extends React.Component{
             this.handleChange=this.handleChange.bind(this);
             this.handleSubmit=this.handleSubmit.bind(this);
             this.delete_users=this.delete_users.bind(this);
-
-
-         
         };
 
        
@@ -59,10 +56,9 @@ class App extends React.Component{
       };
     
 
-     componentDidMount() {
-     
-      this.getUsers();
-     }
+      componentDidMount() {
+        this.getUsers();
+      }
 
 
       handleChange = (e) => {
@@ -180,11 +176,6 @@ class App extends React.Component{
                return false ;
           }
       };
-        
-
-   
-   
-       
 
   render(){
     return(
@@ -225,10 +216,6 @@ class App extends React.Component{
             <p id="error_msg"> </p>
         </form>
    
-          
-         
-        
-     
         <div>
           <table className="table table-bordered">
             <tbody>
@@ -243,8 +230,6 @@ class App extends React.Component{
             </tbody>
           </table>
         </div>
-           
-      
       </div>
     )
   }
